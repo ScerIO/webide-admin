@@ -1,5 +1,4 @@
 import gql from 'graphql-tag'
-import IUser from '../../../api/src/api/user/interface'
 
 /**
  * User fragment
@@ -14,7 +13,3 @@ export const userFragment = gql`
     picture
   }
 `
-
-export {
-  IUser,
-}

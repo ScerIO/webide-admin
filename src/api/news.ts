@@ -2,8 +2,7 @@ import gql from 'graphql-tag'
 import {
   IPaginationQueryOptions,
   pageInfoFragment,
-} from '../pagination'
-import INews from '../../../../api/src/api/news/interface'
+} from './pagination'
 
 /**
  * News fragment
@@ -36,7 +35,3 @@ export const allNews = (options: IPaginationQueryOptions) => gql`
   ${ options.nodes && newsFragment }
   ${ options.pageOnfo && pageInfoFragment }
 `
-
-export {
-  INews,
-}

@@ -15,14 +15,12 @@ import '@polymer/paper-tabs/paper-tabs'
 import '@polymer/paper-icon-button/paper-icon-button'
 import '@polymer/paper-listbox/paper-listbox'
 import '@polymer/paper-item/paper-item'
-import ApolloElement from '../apollo'
+import ApolloElement from 'utils/apollo'
 import gql from 'graphql-tag'
 import * as view from './template.pug'
 import * as style from './style.css'
-import {
-  allNews,
-  INews,
-} from '../api/news'
+import { allNews } from 'api/news'
+import INews from 'site-api/news'
 
 // TODO: use https://github.com/Polymer/polymer-decorators
 

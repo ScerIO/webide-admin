@@ -5,7 +5,8 @@ const webpack = require('webpack'),
   } = require('webpack-bundle-analyzer'),
   {
     spawn
-  } = require('child_process')
+  } = require('child_process'),
+  path = require('path')
 
 // Run poliserve for resolve app-route url's
 spawn('node', ['node_modules/polyserve/bin/polyserve', '--port', '8128'])
@@ -35,7 +36,7 @@ env === 'production' &&
 
 module.exports = {
   entry: {
-    bundle: './src/entry/index.ts'
+    bundle: './src/components/main/index.ts'
   },
   output: {
     filename: '[name].js',
@@ -45,7 +46,13 @@ module.exports = {
   devtool: 'source-map',
 
   resolve: {
-    extensions: ['.ts', '.js', '.json']
+    extensions: ['.ts', '.js', '.json'],
+    alias: {
+     'site-api': path.resolve(__dirname, 'src/site-api/'),
+     'api': path.resolve(__dirname, 'src/api/'),
+     'components': path.resolve(__dirname, 'src/components/'),
+     'utils': path.resolve(__dirname, 'src/utils/'),
+    }
   },
 
   module: {

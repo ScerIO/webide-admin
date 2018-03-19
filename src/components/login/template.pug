@@ -1,0 +1,13 @@
+app-localstorage-document(
+  key='token',
+  data='{{token}}')
+
+app-localstorage-document(
+  key='user',
+  data='{{user}}')
+
+.login
+  paper-input(
+    label='Token'
+    value='{{token}}')
+  paper-button( on-click='login' ) Login

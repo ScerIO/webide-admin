@@ -7,23 +7,19 @@ import '@polymer/paper-styles/shadow'
 import '@polymer/paper-input/paper-input'
 import '@polymer/paper-button/paper-button'
 import '@polymer/app-storage/app-localstorage/app-localstorage-document'
-import ApolloElement from '../apollo'
+import ApolloElement from 'utils/apollo'
 import gql from 'graphql-tag'
 import * as view from './template.pug'
 import * as style from './style.css'
-import { tokenAuth } from '../api/auth'
-import { IUser } from '../api/user'
+import { tokenAuth } from 'api/auth'
+import IUser from 'site-api/user'
 
 // TODO: use https://github.com/Polymer/polymer-decorators
 
 export default class AppLogin extends ApolloElement(PolymerElement) {
 
   private token: string = ''
-  private email: string = ''
-  private isAdmin: boolean = false
-  private firstName: string = ''
-  private lastName: string = ''
-  private picture: string = ''
+  private user: IUser | null = null
 
   public static get template() {
     return html([`<style>${style}</style>${view()}`])
@@ -37,7 +33,8 @@ export default class AppLogin extends ApolloElement(PolymerElement) {
         token: this.token,
       },
     })).data.auth.signIn
-    Object.assign(this, user)
+    delete user.token
+    this.user = user
   }
 
 }

@@ -1,14 +1,6 @@
 app-localstorage-document(
-  key='picture',
-  data='{{profilePicture}}')
-
-app-localstorage-document(
-  key='firstName',
-  data='{{firstName}}')
-
-app-localstorage-document(
-  key='lastName',
-  data='{{lastName}}')
+  key='user',
+  data='{{user}}')
 
 app-route(route='{{route}}', pattern='/:section', data='{{routeData}}')
 
@@ -29,8 +21,8 @@ app-drawer-layout(drawer-width='288px', force-narrow='')
   app-drawer#drawer(slot='drawer', swipe-open='[[smallScreen]]')
     template(is='dom-if', if='[[smallScreen]]')
       app-toolbar.profileBar
-        img.profilePic(src='{{profilePicture}}', width='30', height='30')
-        .profileName [[firstName]] [[lastName]]
+        img.profilePic(src='{{user.profilePicture}}', width='30', height='30')
+        .profileName [[user.firstName]] [[user.lastName]]
         paper-icon-button(icon='settings', aria-label='Settings')
       paper-listbox.mobileMenu(selected='{{routeData.section}}', attr-for-selected='name')
         template(is='dom-repeat', items='[[sections]]')

@@ -11,5 +11,13 @@
     "noImplicitAny": false,                 /* Raise error on expressions and declarations with an implied 'any' type. */
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "*": [
+        "./src/*"
+      ]
+    }
   }
 }

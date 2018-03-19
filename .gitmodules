@@ -1,0 +1,3 @@
+[submodule "src/site-api"]
+	path = src/site-api
+	url = git@bitbucket.org:scerio/site-api.git

@@ -13,23 +13,22 @@ import * as style from './style.css'
 import '../login'
 import '../home'
 import '../404'
+import IUser from 'site-api/user'
 
 // TODO: use https://github.com/Polymer/polymer-decorators
 
-export default class AppEntry extends PolymerElement {
+export default class AppMain extends PolymerElement {
 
+  private user: IUser | null = null
   private page: string | null = null
-
-  private email: string | null = null
-  private isAdmin: boolean = false
 
   private rootPath: string = '/'
 
   public static get properties() {
     return {
-      email: {
-        type: String,
-        observer: '_emailChange',
+      user: {
+        type: Object,
+        observer: '_userChange',
         value: null,
       },
       page: {
@@ -50,7 +49,7 @@ export default class AppEntry extends PolymerElement {
   }
 
   public _routePageChanged(page: string) {
-    if (this.email === null) {
+    if (this.user === null) {
       this.setPage('login')
     } else if (page === 'login') {
       this.setPage('home')
@@ -59,8 +58,8 @@ export default class AppEntry extends PolymerElement {
     }
   }
 
-  private _emailChange(email: string) {
-    if (email === null) {
+  private _userChange(user: string) {
+    if (user === null) {
       this.setPage('login')
     } else if (this.page === 'login') {
       this.setPage('home')
@@ -75,4 +74,4 @@ export default class AppEntry extends PolymerElement {
 
 }
 
-window.customElements.define('app-entry', AppEntry)
+window.customElements.define('app-main', AppMain)

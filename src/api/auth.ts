@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { userFragment } from '../user'
+import { userFragment } from './user'
 
 /**
  * Auth by service token
