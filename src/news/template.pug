@@ -1,0 +1,3 @@
+paper-listbox(selected='{{routeData.section}}', attr-for-selected='name')
+  template(is='dom-repeat', items='[[sections]]')
+    paper-item(name$='[[_toLowerCase(item)]]') [[item]]

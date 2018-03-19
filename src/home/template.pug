@@ -1,0 +1,56 @@
+app-localstorage-document(
+  key='picture',
+  data='{{profilePicture}}')
+
+app-localstorage-document(
+  key='firstName',
+  data='{{firstName}}')
+
+app-localstorage-document(
+  key='lastName',
+  data='{{lastName}}')
+
+app-route(route='{{route}}', pattern='/:section', data='{{routeData}}')
+
+//- paper-tabs(selected='{{routeData.section}}', attr-for-selected='name', scrollable)
+//-   paper-tab( name='news' ) news
+//-   paper-tab( name='messages' ) messages
+
+//- iron-pages(selected='{{routeData.section}}', attr-for-selected='name')
+//-   div(name='news') news
+//-   div(name='messages') messages
+
+iron-media-query(
+  query='max-width: 400px',
+  query-matches='{{smallScreen}}')
+
+app-drawer-layout(drawer-width='288px', force-narrow='')
+  // navigation drawer for small screen sizes
+  app-drawer#drawer(slot='drawer', swipe-open='[[smallScreen]]')
+    template(is='dom-if', if='[[smallScreen]]')
+      app-toolbar.profileBar
+        img.profilePic(src='{{profilePicture}}', width='30', height='30')
+        .profileName [[firstName]] [[lastName]]
+        paper-icon-button(icon='settings', aria-label='Settings')
+      paper-listbox.mobileMenu(selected='{{routeData.section}}', attr-for-selected='name')
+        template(is='dom-repeat', items='[[sections]]')
+          paper-item(name$='[[_toLowerCase(item)]]') [[item]]
+  app-header-layout#headerLayout
+    // main header
+    app-header(slot='header', effects='waterfall', fixed='[[smallScreen]]', condenses='[[!smallScreen]]', reveals='[[!smallScreen]]')
+      app-toolbar#mainToolbar
+        .navItem.leftItem
+          paper-icon-button(icon='menu', drawer-toggle='', alt='Toogle navigation menu')
+          a(href='#[[sectionData.section]]', tabindex='-1')
+            paper-icon-button(icon='arrow-back', alt='Back to the home')
+        .spacer
+          img.logo(src='//app-layout-assets.appspot.com/assets/shrine/shrine_logo.svg', alt='IDE Admin')
+        .navItem
+          paper-icon-button(icon='more-vert', aria-label='More options')
+      paper-tabs(selected='{{routeData.section}}', attr-for-selected='name', scrollable)
+        template(is='dom-repeat', items='[[sections]]')
+          paper-tab( name='[[_toLowerCase(item)]]' ) [[item]]
+    iron-pages(selected='{{routeData.section}}', attr-for-selected='name')
+      app-news(name='news')
+      div(name='notifications') In development
+      div(name='chat') In development

@@ -1,0 +1,110 @@
+:host {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+app-header {
+  background-color: rgba(255, 255, 255, 0.95);
+  --app-header-shadow: {
+    box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.2);
+    height: 10px;
+    bottom: -10px;
+  };
+}
+
+app-header:not([shadow]) {
+  border-bottom: 1px solid #ddd;
+}
+
+app-drawer {
+  --app-drawer-content-container: {
+    background-color: #f3f3f3;
+  };
+}
+
+paper-icon-button {
+  color: #000;
+  --paper-icon-button-ink-color: #31f0ef;
+}
+
+.navItem {
+  @apply --layout-self-start;
+  margin-top: 13px;
+  width: 40px;
+}
+
+.spacer {
+  @apply --layout;
+  @apply --layout-flex-auto;
+  @apply --layout-center-center;
+}
+
+.logo {
+  width: 120px;
+  height: 40px;
+  background-size: 100% 100%;
+}
+
+.leftItem [icon] {
+  display: none;
+}
+
+paper-tabs {
+  --paper-tabs-selection-bar-color: #31f0ef;
+  margin-left: -55px;
+  color: #31f0ef;
+  font-size: 13px;
+}
+
+paper-tab {
+  --paper-tab-ink: #31f0ef;
+  text-transform: uppercase;
+  color: var(--primary-text-color);
+  font-weight: 500;
+}
+
+.mobileMenu {
+  background: transparent;
+}
+
+.list paper-item.active {
+  color: black;
+  font-weight: bold;
+}
+
+.profileBar {
+  margin-bottom: 40px;
+}
+
+.profilePic {
+  border-radius: 50% 50%;
+}
+
+.profileName {
+  @apply --layout-flex;
+  margin-left: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0a3142;
+}
+
+/**
+ * Desktop small, tablet
+ */
+@media (max-width: 1200px) {
+  .logo {
+    width: 89px;
+    height: 17px;
+  }
+}
+
+/**
+ * Phone
+ */
+@media (max-width: 400px) {
+  .leftItem [icon=menu] {
+    display: block;
+  }
+  paper-tabs {
+    display: none;
+  }
+}

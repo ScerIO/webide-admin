@@ -1,0 +1,29 @@
+app-localstorage-document(
+  key='token',
+  data='{{token}}')
+
+app-localstorage-document(
+  key='email',
+  data='{{email}}')
+
+app-localstorage-document(
+  key='isAdmin',
+  data='{{isAdmin}}')
+
+app-localstorage-document(
+  key='firstName',
+  data='{{firstName}}')
+
+app-localstorage-document(
+  key='lastName',
+  data='{{lastName}}')
+
+app-localstorage-document(
+  key='picture',
+  data='{{picture}}')
+
+.login
+  paper-input(
+    label='Token'
+    value='{{token}}')
+  paper-button( on-click='login' ) Login
