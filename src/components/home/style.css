@@ -2,17 +2,20 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.inDevelopment {
+  @apply --paper-font-title;
+  text-align: center;
+  margin: 40px 0;
+}
+
 app-header {
   background-color: rgba(255, 255, 255, 0.95);
-  --app-header-shadow: {
-    box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.2);
-    height: 10px;
-    bottom: -10px;
-  };
+  /* @apply --shadow-elevation-2dp; */
+  --app-header-shadow: var(--shadow-elevation-2dp);
 }
 
 app-header:not([shadow]) {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--paper-grey-200);
 }
 
 app-drawer {
@@ -36,6 +39,7 @@ paper-icon-button {
   @apply --layout;
   @apply --layout-flex-auto;
   @apply --layout-center-center;
+  @apply --paper-font-title;
 }
 
 .logo {
@@ -49,7 +53,6 @@ paper-icon-button {
 }
 
 paper-tabs {
-  --paper-tabs-selection-bar-color: #31f0ef;
   margin-left: -55px;
   color: #31f0ef;
   font-size: 13px;

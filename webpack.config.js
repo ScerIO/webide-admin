@@ -48,10 +48,10 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.json'],
     alias: {
-     'site-api': path.resolve(__dirname, 'src/site-api/'),
-     'api': path.resolve(__dirname, 'src/api/'),
-     'components': path.resolve(__dirname, 'src/components/'),
-     'utils': path.resolve(__dirname, 'src/utils/'),
+      'site-api': path.resolve(__dirname, 'src/site-api/'),
+      'api': path.resolve(__dirname, 'src/api/'),
+      'components': path.resolve(__dirname, 'src/components/'),
+      'utils': path.resolve(__dirname, 'src/utils/'),
     }
   },
 
@@ -69,9 +69,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [{
-          loader: 'text-loader'
-        }]
+        use: ['text-loader']
       },
     ]
   },

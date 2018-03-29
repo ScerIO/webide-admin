@@ -2,6 +2,10 @@ import {
   Element as PolymerElement,
   html,
 } from '@polymer/polymer/polymer-element'
+import {
+  customElement,
+  property,
+} from '@polymer/decorators'
 import '@polymer/iron-flex-layout/iron-flex-layout'
 import '@polymer/iron-media-query/iron-media-query'
 import '@polymer/iron-icons/iron-icons'
@@ -14,7 +18,9 @@ import '@polymer/app-layout/app-scroll-effects/effects/waterfall'
 import '@polymer/paper-tabs/paper-tabs'
 import '@polymer/paper-icon-button/paper-icon-button'
 import '@polymer/paper-listbox/paper-listbox'
-import '@polymer/paper-item/paper-item'
+import '@polymer/paper-item/paper-icon-item'
+import '@polymer/paper-item/paper-item-body'
+import '@polymer/paper-fab/paper-fab'
 import ApolloElement from 'utils/apollo'
 import gql from 'graphql-tag'
 import * as view from './template.pug'
@@ -22,30 +28,17 @@ import * as style from './style.css'
 import { allNews } from 'api/news'
 import INews from 'site-api/news'
 
-// TODO: use https://github.com/Polymer/polymer-decorators
-
+@customElement('app-news')
 export default class AppNews extends ApolloElement(PolymerElement) {
 
+  @property({ type: Number })
   private offset: number = 0
+
+  @property({ type: Number })
   private limit: number = 5
 
-  private news: INews[] | null = null
-
-  public static get properties() {
-    return {
-      route: {
-        type: Object,
-        notify: true,
-      },
-      query1: {
-        type: Object,
-      },
-    }
-  }
-
-  public test(test: any) {
-    console.log(test)
-  }
+  @property({ type: Array })
+  private news: INews[] = []
 
   public static get template() {
     return html([`<style>${style}</style>${view()}`])
@@ -53,7 +46,7 @@ export default class AppNews extends ApolloElement(PolymerElement) {
 
   get apollo() {
     return {
-      query1: {
+      allNews: {
         query: allNews({
           count: true,
           nodes: true,
@@ -63,13 +56,11 @@ export default class AppNews extends ApolloElement(PolymerElement) {
           offset: this.offset || 0,
           limit: this.limit || 5,
         },
-        success: ({ data }) => {
-          this.news = data.news.all
-          console.log(this.news)
-        },
       },
     }
   }
-}
 
-window.customElements.define('app-news', AppNews)
+  public _normalizeDate(datestamp: string): string {
+    return new Date(datestamp).toLocaleString()
+  }
+}

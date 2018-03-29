@@ -2,6 +2,10 @@ import {
   Element as PolymerElement,
   html,
 } from '@polymer/polymer/polymer-element'
+import {
+  customElement,
+  property,
+} from '@polymer/decorators'
 import '@polymer/paper-styles/color'
 import '@polymer/paper-styles/shadow'
 import '@polymer/paper-input/paper-input'
@@ -14,11 +18,13 @@ import * as style from './style.css'
 import { tokenAuth } from 'api/auth'
 import IUser from 'site-api/user'
 
-// TODO: use https://github.com/Polymer/polymer-decorators
-
+@customElement('app-login')
 export default class AppLogin extends ApolloElement(PolymerElement) {
 
+  @property({ type: String })
   private token: string = ''
+
+  @property({ type: Object })
   private user: IUser | null = null
 
   public static get template() {
@@ -33,10 +39,9 @@ export default class AppLogin extends ApolloElement(PolymerElement) {
         token: this.token,
       },
     })).data.auth.signIn
-    delete user.token
+    // @ts-ignore
+    delete user.__typename
     this.user = user
   }
 
 }
-
-window.customElements.define('app-login', AppLogin)

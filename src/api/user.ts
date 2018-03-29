@@ -5,7 +5,6 @@ import gql from 'graphql-tag'
  */
 export const userFragment = gql`
   fragment User on UserSchema {
-    token
     email
     isAdmin
     firstName
