@@ -5,9 +5,9 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack -w --mode development",
-    "build:development": "webpack --mode development",
-    "build:production": "webpack --mode production"
+    "start": "cross-env NODE_ENV=development webpack -w --mode development",
+    "build:development": "cross-env NODE_ENV=development webpack --mode development",
+    "build:production": "cross-env NODE_ENV=production webpack --mode production"
   },
   "dependencies": {
     "@polymer/app-layout": "3.0.0-pre.1",
@@ -38,15 +38,16 @@
   "devDependencies": {
     "browser-sync": "^2.23.6",
     "browser-sync-webpack-plugin": "^2.0.1",
-    "node-sass": "^4.7.2",
+    "cross-env": "^5.1.4",
+    "html-webpack-plugin": "^3.2.0",
     "polyserve": "^0.24.0",
     "pug": "^2.0.1",
-    "pug-loader": "https://github.com/pugjs/pug-loader/tarball/master",
-    "sass-loader": "^6.0.7",
+    "pug-loader": "^2.4.0",
     "text-loader": "^0.0.1",
     "ts-loader": "^4.0.1",
     "tslint": "^5.9.1",
     "typescript": "^2.7.2",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.1.1",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.12"
