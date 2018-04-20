@@ -2,17 +2,11 @@ const webpack = require('webpack'),
   BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
   { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
-  UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
   { spawn } = require('child_process'),
   path = require('path')
 
 const env = process.env.NODE_ENV,
   plugins = []
-
-env === 'production' &&
-  plugins.push(
-    new UglifyJsPlugin(),
-  )
 
 env === 'development' &&
   plugins.push(
