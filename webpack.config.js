@@ -48,18 +48,27 @@ module.exports = {
   },
 
   module: {
-    rules: [{
-      test: /\.ts?$/,
-      loader: ['ts-loader']
-    },
-    {
-      test: /.pug$/,
-      loader: ['pug-loader']
-    },
-    {
-      test: /\.css$/,
-      use: ['text-loader']
-    },
+    rules: [
+      {
+        test: /\.ts?$/,
+        loader: ['ts-loader']
+      },
+      {
+        test: /.pug$/,
+        loader: ['pug-loader']
+      },
+      {
+        test: /\.css$/,
+        use: ['text-loader']
+      },
+      {
+        test: /\.(ico|svg|png|jpg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[hash].[ext]',
+          outputPath: 'assets/',
+        },
+      },
     ]
   },
 
