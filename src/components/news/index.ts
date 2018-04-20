@@ -1,5 +1,5 @@
 import {
-  Element as PolymerElement,
+  PolymerElement,
   html,
 } from '@polymer/polymer/polymer-element'
 import {
