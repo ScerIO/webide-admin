@@ -35,3 +35,27 @@ export const allNews = (options: IPaginationQueryOptions) => gql`
   ${ options.nodes && newsFragment }
   ${ options.pageOnfo && pageInfoFragment }
 `
+
+/**
+ * Add news
+ */
+export const addNews = gql`
+  mutation ($token: String!,
+            $image: String!,
+            $title: String!,
+            $description: String!,
+            $content: String!,
+            $shareVK: Boolean!) {
+    news {
+      add(token: $token,
+          input: { image: $image,
+                   title: $title,
+                   description: $description,
+                   content: $content,
+                   shareVK: $shareVK }) {
+        ...News
+      }
+    }
+  }
+  ${ newsFragment }
+`

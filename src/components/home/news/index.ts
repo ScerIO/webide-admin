@@ -20,12 +20,18 @@ import '@polymer/paper-icon-button/paper-icon-button'
 import '@polymer/paper-listbox/paper-listbox'
 import '@polymer/paper-item/paper-icon-item'
 import '@polymer/paper-item/paper-item-body'
+import '@polymer/paper-input/paper-input'
+import '@polymer/paper-input/paper-textarea'
 import '@polymer/paper-fab/paper-fab'
+import '@polymer/paper-toggle-button/paper-toggle-button'
+import '@polymer/paper-dialog/paper-dialog'
+import '@polymer/paper-dialog-scrollable/paper-dialog-scrollable'
+
 import ApolloElement from 'utils/apollo'
 import gql from 'graphql-tag'
 import * as view from './template.pug'
 import * as style from './style.css'
-import { allNews } from 'api/news'
+import { allNews, addNews } from 'api/news'
 import INews from 'site-api/news'
 
 @customElement('app-news')
@@ -39,6 +45,24 @@ export default class AppNews extends ApolloElement(PolymerElement) {
 
   @property({ type: Array })
   private news: INews[] = []
+
+  @property({ type: String })
+  private token: string = ''
+
+  @property({ type: String })
+  private image: string = ''
+
+  @property({ type: String })
+  private newsTitle: string = ''
+
+  @property({ type: String })
+  private description: string = ''
+
+  @property({ type: String })
+  private content: string = ''
+
+  @property({ type: Boolean })
+  private shareVK: boolean = false
 
   public static get template() {
     return html([`<style>${style}</style>${view()}`])
@@ -61,6 +85,27 @@ export default class AppNews extends ApolloElement(PolymerElement) {
   }
 
   public _normalizeDate(datestamp: string): string {
-    return new Date(datestamp).toLocaleString()
+    return new Date(Number(datestamp)).toLocaleString()
+  }
+
+  public addNewsDialog(): void {
+    (this.$.addNewsDialog as any).open()
+  }
+
+  public async addNews(): Promise<INews> {
+    // @ts-ignore
+    const news: INews = (await this.$apollo.mutate({
+      mutation: addNews,
+      variables: {
+        token: this.token,
+        image: this.image,
+        title: this.newsTitle,
+        description: this.description,
+        content: this.content,
+        shareVK: this.shareVK,
+      },
+    })).data.news.add
+
+    return news
   }
 }

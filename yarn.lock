@@ -540,6 +540,12 @@
     "@polymer/iron-validatable-behavior" "3.0.0-pre.12"
     "@polymer/polymer" "3.0.0-pre.12"
 
+"@polymer/iron-fit-behavior@3.0.0-pre.12":
+  version "3.0.0-pre.12"
+  resolved "https://registry.yarnpkg.com/@polymer/iron-fit-behavior/-/iron-fit-behavior-3.0.0-pre.12.tgz#c6aa70a768cda9ca34c5f564d3237953a5e70c37"
+  dependencies:
+    "@polymer/polymer" "3.0.0-pre.12"
+
 "@polymer/iron-flex-layout@3.0.0-pre.12", "@polymer/iron-flex-layout@^3.0.0-pre.12":
   version "3.0.0-pre.12"
   resolved "https://registry.yarnpkg.com/@polymer/iron-flex-layout/-/iron-flex-layout-3.0.0-pre.12.tgz#209791d067521115e61a9fb2cb4070f0de82322b"
@@ -610,6 +616,15 @@
   dependencies:
     "@polymer/polymer" "3.0.0-pre.12"
 
+"@polymer/iron-overlay-behavior@3.0.0-pre.12":
+  version "3.0.0-pre.12"
+  resolved "https://registry.yarnpkg.com/@polymer/iron-overlay-behavior/-/iron-overlay-behavior-3.0.0-pre.12.tgz#6567ce7d066536f46f16a0e952058b7118cac341"
+  dependencies:
+    "@polymer/iron-a11y-keys-behavior" "3.0.0-pre.12"
+    "@polymer/iron-fit-behavior" "3.0.0-pre.12"
+    "@polymer/iron-resizable-behavior" "3.0.0-pre.12"
+    "@polymer/polymer" "3.0.0-pre.12"
+
 "@polymer/iron-pages@^3.0.0-pre.12":
   version "3.0.0-pre.12"
   resolved "https://registry.yarnpkg.com/@polymer/iron-pages/-/iron-pages-3.0.0-pre.12.tgz#3a1c6d462411dbfcd268c6f6544e836379a151b6"
@@ -643,6 +658,14 @@
     "@polymer/iron-meta" "3.0.0-pre.12"
     "@polymer/polymer" "3.0.0-pre.12"
 
+"@polymer/neon-animation@3.0.0-pre.12":
+  version "3.0.0-pre.12"
+  resolved "https://registry.yarnpkg.com/@polymer/neon-animation/-/neon-animation-3.0.0-pre.12.tgz#395327088ee038f6355e6e08edab827d323f9392"
+  dependencies:
+    "@polymer/iron-resizable-behavior" "3.0.0-pre.12"
+    "@polymer/iron-selector" "3.0.0-pre.12"
+    "@polymer/polymer" "3.0.0-pre.12"
+
 "@polymer/paper-behaviors@3.0.0-pre.12":
   version "3.0.0-pre.12"
   resolved "https://registry.yarnpkg.com/@polymer/paper-behaviors/-/paper-behaviors-3.0.0-pre.12.tgz#b6d7686fec73b32c14c106f753c2fc6798690e6e"
@@ -659,6 +682,32 @@
     "@polymer/iron-flex-layout" "3.0.0-pre.12"
     "@polymer/paper-behaviors" "3.0.0-pre.12"
     "@polymer/paper-styles" "3.0.0-pre.12"
+    "@polymer/polymer" "3.0.0-pre.12"
+
+"@polymer/paper-dialog-behavior@3.0.0-pre.12":
+  version "3.0.0-pre.12"
+  resolved "https://registry.yarnpkg.com/@polymer/paper-dialog-behavior/-/paper-dialog-behavior-3.0.0-pre.12.tgz#1e9edf6ea11d0388d0a9afc7b6de0d1e0367e361"
+  dependencies:
+    "@polymer/iron-overlay-behavior" "3.0.0-pre.12"
+    "@polymer/paper-styles" "3.0.0-pre.12"
+    "@polymer/polymer" "3.0.0-pre.12"
+
+"@polymer/paper-dialog-scrollable@^3.0.0-pre.12":
+  version "3.0.0-pre.12"
+  resolved "https://registry.yarnpkg.com/@polymer/paper-dialog-scrollable/-/paper-dialog-scrollable-3.0.0-pre.12.tgz#d932786dcb2d9cc3092c82545619b0dfe86e8117"
+  dependencies:
+    "@polymer/iron-flex-layout" "3.0.0-pre.12"
+    "@polymer/paper-dialog-behavior" "3.0.0-pre.12"
+    "@polymer/paper-styles" "3.0.0-pre.12"
+    "@polymer/polymer" "3.0.0-pre.12"
+
+"@polymer/paper-dialog@^3.0.0-pre.12":
+  version "3.0.0-pre.12"
+  resolved "https://registry.yarnpkg.com/@polymer/paper-dialog/-/paper-dialog-3.0.0-pre.12.tgz#f912cac4d0c4cbb5afc180da2062470ad01c765d"
+  dependencies:
+    "@polymer/iron-overlay-behavior" "3.0.0-pre.12"
+    "@polymer/neon-animation" "3.0.0-pre.12"
+    "@polymer/paper-dialog-behavior" "3.0.0-pre.12"
     "@polymer/polymer" "3.0.0-pre.12"
 
 "@polymer/paper-fab@^3.0.0-pre.12":
@@ -737,6 +786,15 @@
     "@polymer/iron-resizable-behavior" "3.0.0-pre.12"
     "@polymer/paper-behaviors" "3.0.0-pre.12"
     "@polymer/paper-icon-button" "3.0.0-pre.12"
+    "@polymer/paper-styles" "3.0.0-pre.12"
+    "@polymer/polymer" "3.0.0-pre.12"
+
+"@polymer/paper-toggle-button@^3.0.0-pre.12":
+  version "3.0.0-pre.12"
+  resolved "https://registry.yarnpkg.com/@polymer/paper-toggle-button/-/paper-toggle-button-3.0.0-pre.12.tgz#73976105c5265bd3d70b1a3d1d7bf9a88c832e15"
+  dependencies:
+    "@polymer/iron-checked-element-behavior" "3.0.0-pre.12"
+    "@polymer/paper-behaviors" "3.0.0-pre.12"
     "@polymer/paper-styles" "3.0.0-pre.12"
     "@polymer/polymer" "3.0.0-pre.12"
 

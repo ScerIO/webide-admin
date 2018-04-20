@@ -39,6 +39,9 @@ export default class AppLogin extends ApolloElement(PolymerElement) {
         token: this.token,
       },
     })).data.auth.signIn
+
+    if (!user.isAdmin) return console.error('User not admin!')
+
     // @ts-ignore
     delete user.__typename
     this.user = user

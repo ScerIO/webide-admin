@@ -9,3 +9,13 @@ paper-fab {
   bottom: 16px;
   right: 16px;
 }
+
+paper-dialog {
+  width: 90%;
+}
+
+@media (max-width: 400px) {
+  paper-dialog {
+    width: 100%;
+  }
+}

@@ -23,7 +23,7 @@ import '@polymer/paper-item/paper-item'
 import '@polymer/paper-styles/typography'
 import * as view from './template.pug'
 import * as style from './style.css'
-import '../news'
+import './news'
 
 interface IRouteData {
   page?: string
