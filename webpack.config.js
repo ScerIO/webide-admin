@@ -32,6 +32,7 @@ module.exports = {
   output: {
     path: `${__dirname}/build`,
     filename: 'bundle.js',
+    publicPath: '/',
   },
 
   devtool: env === 'production' ? false : 'source-map',

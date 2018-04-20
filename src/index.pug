@@ -1,16 +1,17 @@
 doctype html
-head
-  // Required meta tags
-  meta(charset='utf-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
-  title IDE
-  script(src='/bundle.js')
-  style(is='custom-style').
-    html {
-      --accent-color: var(--paper-green-400);
-      --paper-tabs-selection-bar-color: var(--paper-green-400);
-    }
-    body {
-      margin: 0;
-    }
-app-main
+html
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title IDE
+    style(is='custom-style').
+      html {
+        --accent-color: var(--paper-green-400);
+        --paper-tabs-selection-bar-color: var(--paper-green-400);
+      }
+      body {
+        margin: 0;
+      }
+  body
+    app-main

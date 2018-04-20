@@ -10,7 +10,7 @@ import enviroment from 'utils/enviroment'
 export const apolloClient = new ApolloClient({
   link: new HttpLink({ uri: enviroment({
       production: 'https://api.ide.scer.io/graphql',
-      development: 'http://localhost/graphql',
+      development: 'https://api.ide.scer.io/graphql', // 'http://localhost/graphql',
     }),
   }),
   cache: new InMemoryCache(),

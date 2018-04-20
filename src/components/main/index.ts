@@ -46,8 +46,18 @@ export default class AppMain extends (PolymerElement as new () => Polymer.Elemen
    */
   @observe('routeData.page, user')
   private router(page: string, user: string) {
-    console.log('called')
     if (user === null) this.set('routeData.page', 'login')
     else if (page === 'login' || page === '') this.set('routeData.page', 'home')
+  }
+
+  /**
+   * Fix path
+   * TODO: Remove on resolve my pr with add flag 'auto-activate' in home router
+   * *
+   * @param path
+   */
+  @observe('homeSubroute.path')
+  private routePathChanged(path: string) {
+    if (path === '') this.set('homeSubroute.path', '/')
   }
 }

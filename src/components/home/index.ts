@@ -25,6 +25,10 @@ import * as view from './template.pug'
 import * as style from './style.css'
 import '../news'
 
+interface IRouteData {
+  page?: string
+}
+
 @customElement('app-home')
 export default class AppHome extends (PolymerElement as new () => Polymer.Element) {
 
@@ -35,10 +39,8 @@ export default class AppHome extends (PolymerElement as new () => Polymer.Elemen
     'Chat',
   ]
 
-  @property({ type: Object })
-  private routeData: { page: string } = {
-    page: '',
-  }
+  @property({ type: Object, observer: AppHome.prototype.routeChanged })
+  private routeData: IRouteData = {}
 
   public static get template() {
     return html([`<style>${style}</style>${view()}`])
@@ -51,11 +53,12 @@ export default class AppHome extends (PolymerElement as new () => Polymer.Elemen
   /**
    * Load main page
    * *
-   * @param page
+   * @param route
    */
-  @observe('routeData.page')
-  private routePageChanged(page: string) {
-    console.log(page)
+  private routeChanged(route: IRouteData = {}) {
+    if (!('page' in route)) return
+    const { page } = route
+    console.log(`Page -> ${page}`)
     if (page === '' || page === undefined) this.set('routeData.page', 'news')
   }
 
