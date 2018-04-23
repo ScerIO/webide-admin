@@ -19,6 +19,7 @@
     "@polymer/iron-media-query": "^3.0.0-pre.12",
     "@polymer/iron-pages": "^3.0.0-pre.12",
     "@polymer/iron-selector": "^3.0.0-pre.12",
+    "@polymer/neon-animation": "^3.0.0-pre.12",
     "@polymer/paper-button": "^3.0.0-pre.12",
     "@polymer/paper-dialog": "^3.0.0-pre.12",
     "@polymer/paper-dialog-scrollable": "^3.0.0-pre.12",
@@ -36,7 +37,8 @@
     "apollo-link-http": "^1.5.3",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.8.0",
-    "polymer-apollo": "^2.0.0-rc.6"
+    "polymer-apollo": "^2.0.0-rc.6",
+    "web-animations-js": "^2.3.1"
   },
   "devDependencies": {
     "browser-sync": "^2.23.6",

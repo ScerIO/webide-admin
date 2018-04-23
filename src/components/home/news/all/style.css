@@ -1,0 +1,21 @@
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+paper-fab {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
+
+paper-dialog {
+  width: 90%;
+}
+
+@media (max-width: 400px) {
+  paper-dialog {
+    width: 100%;
+  }
+}

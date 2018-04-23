@@ -5,107 +5,48 @@ import {
 import {
   customElement,
   property,
+  observe,
 } from '@polymer/decorators'
-import '@polymer/iron-flex-layout/iron-flex-layout'
-import '@polymer/iron-media-query/iron-media-query'
-import '@polymer/iron-icons/iron-icons'
-import '@polymer/app-layout/app-drawer-layout/app-drawer-layout'
-import '@polymer/app-layout/app-drawer/app-drawer'
-import '@polymer/app-layout/app-toolbar/app-toolbar'
-import '@polymer/app-layout/app-header-layout/app-header-layout'
-import '@polymer/app-layout/app-header/app-header'
-import '@polymer/app-layout/app-scroll-effects/effects/waterfall'
-import '@polymer/paper-tabs/paper-tabs'
-import '@polymer/paper-icon-button/paper-icon-button'
-import '@polymer/paper-listbox/paper-listbox'
-import '@polymer/paper-item/paper-icon-item'
-import '@polymer/paper-item/paper-item-body'
-import '@polymer/paper-input/paper-input'
-import '@polymer/paper-input/paper-textarea'
-import '@polymer/paper-fab/paper-fab'
-import '@polymer/paper-toggle-button/paper-toggle-button'
-import '@polymer/paper-dialog/paper-dialog'
-import '@polymer/paper-dialog-scrollable/paper-dialog-scrollable'
+import '@polymer/paper-button'
 
 import ApolloElement from 'utils/apollo'
-import gql from 'graphql-tag'
 import * as view from './template.pug'
 import * as style from './style.css'
-import { allNews, addNews } from 'api/news'
+import { allNews } from 'api/news'
 import INews from 'site-api/news'
+import './all'
+import './add'
+
+interface IRouteData {
+  page?: string
+}
 
 @customElement('app-news')
-export default class AppNews extends ApolloElement(PolymerElement) {
+export default class AppNews extends (PolymerElement as new () => Polymer.Element) {
 
-  @property({ type: Number })
-  private offset: number = 0
-
-  @property({ type: Number })
-  private limit: number = 5
-
-  @property({ type: Array })
-  private news: INews[] = []
+  @property({ type: Object })
+  private routeData: IRouteData = {}
 
   @property({ type: String })
-  private token: string = ''
-
-  @property({ type: String })
-  private image: string = ''
-
-  @property({ type: String })
-  private newsTitle: string = ''
-
-  @property({ type: String })
-  private description: string = ''
-
-  @property({ type: String })
-  private content: string = ''
-
-  @property({ type: Boolean })
-  private shareVK: boolean = false
+  private pageName: string = 'add'
 
   public static get template() {
     return html([`<style>${style}</style>${view()}`])
   }
 
-  get apollo() {
-    return {
-      allNews: {
-        query: allNews({
-          count: true,
-          nodes: true,
-          pageOnfo: true,
-        }),
-        variables: {
-          offset: this.offset || 0,
-          limit: this.limit || 5,
-        },
-      },
-    }
+  public selectPage() {
+    const { page } = this.routeData
+    this.set('pageName', page === 'all' ? 'all' :'add' )
+    this.set('routeData.page', page === 'all' ? 'add' : 'all')
   }
 
-  public _normalizeDate(datestamp: string): string {
-    return new Date(Number(datestamp)).toLocaleString()
-  }
-
-  public addNewsDialog(): void {
-    (this.$.addNewsDialog as any).open()
-  }
-
-  public async addNews(): Promise<INews> {
-    // @ts-ignore
-    const news: INews = (await this.$apollo.mutate({
-      mutation: addNews,
-      variables: {
-        token: this.token,
-        image: this.image,
-        title: this.newsTitle,
-        description: this.description,
-        content: this.content,
-        shareVK: this.shareVK,
-      },
-    })).data.news.add
-
-    return news
+  /**
+   * Load main page
+   * *
+   * @param route
+   */
+  @observe('routeData')
+  private routeChanged(route: IRouteData = {}) {
+    if (route.page === '' || route.page === undefined) this.set('routeData.page', 'all')
   }
 }

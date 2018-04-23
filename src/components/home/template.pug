@@ -3,6 +3,7 @@ app-localstorage-document(
   data='{{user}}')
 
 app-route(route='{{route}}', pattern='/:page', data='{{routeData}}')
+app-route(route='{{route}}', pattern='/news', tail='{{newsSubroute}}')
 
 iron-media-query(
   query='max-width: 400px',
@@ -34,6 +35,6 @@ app-drawer-layout(drawer-width='288px', force-narrow='')
         template(is='dom-repeat', items='[[pages]]')
           paper-tab( name='[[_toLowerCase(item)]]' ) [[item]]
     iron-pages(selected='[[routeData.page]]', attr-for-selected='name')
-      app-news(name='news')
+      app-news(name='news', route='{{newsSubroute}}')
       div(name='notifications').inDevelopment In development
       div(name='chat').inDevelopment In development

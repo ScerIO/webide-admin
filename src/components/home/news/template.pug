@@ -1,26 +1,8 @@
-app-localstorage-document(
-  key='token',
-  data='{{token}}')
+app-route(route='{{route}}', pattern='/:page', data='{{routeData}}')
 
-paper-listbox
-  template(is='dom-repeat', items='{{news.all.nodes}}')
-    paper-icon-item
-      img( class='avatar', slot='item-icon', src='[[item.image]]')
-      paper-item-body(three-line)
-        div [[item.title]]
-        div [[item.description]]
-        div(secondary) Date: [[_normalizeDate(item.timestamp)]] | id: [[item.id]]
+.toolbar
+  paper-button( on-click='selectPage' ) {{pageName}}
 
-paper-fab( icon='add', on-click="addNewsDialog")
-
-paper-dialog( id='addNewsDialog' )
-  h2 News
-  paper-dialog-scrollable
-    paper-input( label='Picture URL', value='{{image}}' )
-    paper-input( label='Title', value='{{newsTitle}}' )
-    paper-textarea( label='Description', value='{{description}}' )
-    paper-textarea( label='Content', value='{{content}}' )
-  .buttons
-    paper-toggle-button( active='{{shareVK}}' ) VK
-    paper-button(dialog-dismiss, autofocus) Cancel
-    paper-button(dialog-confirm, on-click='addNews') Accept
+iron-pages(selected='[[routeData.page]]', attr-for-selected='name')
+  app-news-all(name='all')
+  app-news-add(name='add')

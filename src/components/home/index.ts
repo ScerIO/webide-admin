@@ -62,4 +62,15 @@ export default class AppHome extends (PolymerElement as new () => Polymer.Elemen
     if (page === '' || page === undefined) this.set('routeData.page', 'news')
   }
 
+  /**
+   * Fix path
+   * TODO: Remove on resolve my pr with add flag 'auto-activate' in home router
+   * *
+   * @param path
+   */
+  @observe('newsSubroute.path')
+  private routePathChanged(path: string) {
+    if (path === '') this.set('newsSubroute.path', '/')
+  }
+
 }
