@@ -1,4 +1,5 @@
 import { ApolloClient } from 'apollo-client'
+import { PolymerElementType } from '@polymer/polymer/polymer-element'
 import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { PolymerApolloMixin } from 'polymer-apollo'
@@ -16,4 +17,4 @@ export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
-export default (element) => PolymerApolloMixin({ apolloClient }, element) as new () => Polymer.Element
+export default (element) => PolymerApolloMixin({ apolloClient }, element) as PolymerElementType

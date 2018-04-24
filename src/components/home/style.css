@@ -10,8 +10,6 @@
 
 app-header {
   background-color: rgba(255, 255, 255, 0.95);
-  /* @apply --shadow-elevation-2dp; */
-  --app-header-shadow: var(--shadow-elevation-2dp);
 }
 
 app-header:not([shadow]) {

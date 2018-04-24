@@ -9,6 +9,7 @@ import {
 import '@polymer/paper-input/paper-input'
 import '@polymer/paper-input/paper-textarea'
 import '@polymer/paper-toggle-button/paper-toggle-button'
+import '@polymer/paper-toast/paper-toast'
 
 import ApolloElement from 'utils/apollo'
 import * as view from './template.pug'
@@ -41,9 +42,9 @@ export default class AppNewsAdd extends ApolloElement(PolymerElement) {
     return html([`<style>${style}</style>${view()}`])
   }
 
-  public async addNews(): Promise<INews> {
+  public addNews() {
     // @ts-ignore
-    const news: INews = (await this.$apollo.mutate({
+    this.$apollo.mutate({
       mutation: addNews,
       variables: {
         token: this.token,
@@ -53,8 +54,8 @@ export default class AppNewsAdd extends ApolloElement(PolymerElement) {
         content: this.content,
         shareVK: this.shareVK,
       },
-    })).data.news.add
-
-    return news
+    })
+    .then((data: any) => (this.$.toast as any).show('Sucsess'))
+    .catch(() => (this.$.toast as any).show('Error'))
   }
 }

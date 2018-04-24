@@ -22,7 +22,7 @@ interface IRouteData {
 }
 
 @customElement('app-news')
-export default class AppNews extends (PolymerElement as new () => Polymer.Element) {
+export default class AppNews extends PolymerElement {
 
   @property({ type: Object })
   private routeData: IRouteData = {}

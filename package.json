@@ -30,6 +30,7 @@
     "@polymer/paper-listbox": "^3.0.0-pre.12",
     "@polymer/paper-styles": "^3.0.0-pre.12",
     "@polymer/paper-tabs": "^3.0.0-pre.12",
+    "@polymer/paper-toast": "^3.0.0-pre.12",
     "@polymer/paper-toggle-button": "^3.0.0-pre.12",
     "@polymer/polymer": "^3.0.0-pre.12",
     "apollo-cache-inmemory": "^1.1.11",

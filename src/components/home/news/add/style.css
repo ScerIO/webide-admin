@@ -1,17 +1,14 @@
+:host {
+  min-height: 100%;
+}
+
 .container {
   padding: 16px;
-  margin-bottom: 100px;
 }
 
 .buttons {
   @apply --layout-horizontal;
   @apply --layout-end-justified;
-  @apply --shadow-elevation-4dp;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 16px;
+  padding: 16px 0;
   box-sizing: border-box;
-  background: white;
 }

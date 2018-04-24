@@ -25,13 +25,13 @@ app-drawer-layout(drawer-width='288px', force-narrow='')
     app-header(slot='header', effects='waterfall', fixed='[[smallScreen]]', condenses='[[!smallScreen]]', reveals='[[!smallScreen]]')
       app-toolbar#mainToolbar
         .navItem.leftItem
-          paper-icon-button(icon='menu', drawer-toggle='', alt='Toogle navigation menu')
+          paper-icon-button(icon='menu', drawer-toggle, alt='Toogle navigation menu')
           a(href='#[[sectionData.section]]', tabindex='-1')
             paper-icon-button(icon='arrow-back', alt='Back to the home')
         .spacer IDE Admin
         .navItem
           paper-icon-button(icon='more-vert', aria-label='More options')
-      paper-tabs(selected='{{routeData.page}}', attr-for-selected='name', scrollable)
+      paper-tabs(selected='{{routeData.page}}', attr-for-selected='name', scrollable, sticky)
         template(is='dom-repeat', items='[[pages]]')
           paper-tab( name='[[_toLowerCase(item)]]' ) [[item]]
     iron-pages(selected='[[routeData.page]]', attr-for-selected='name')

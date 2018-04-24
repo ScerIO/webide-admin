@@ -30,7 +30,7 @@ interface IRouteData {
 }
 
 @customElement('app-home')
-export default class AppHome extends (PolymerElement as new () => Polymer.Element) {
+export default class AppHome extends PolymerElement {
 
   @property({ type: Array })
   private pages: string[] = [

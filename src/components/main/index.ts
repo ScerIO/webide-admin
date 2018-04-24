@@ -23,7 +23,7 @@ import '../404'
 import IUser from 'site-api/user'
 
 @customElement('app-main')
-export default class AppMain extends (PolymerElement as new () => Polymer.Element) {
+export default class AppMain extends PolymerElement {
 
   @property({ type: Object })
   private user: IUser | null = null

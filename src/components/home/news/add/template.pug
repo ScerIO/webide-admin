@@ -8,6 +8,8 @@ app-localstorage-document(
   paper-textarea( label='Description', value='{{description}}' )
   paper-textarea( label='Content', value='{{content}}' )
 
+paper-toast( id='toast' )
+
 .buttons
   paper-toggle-button( active='{{shareVK}}' ) VK
   paper-button(dialog-confirm, on-click='addNews') Accept
