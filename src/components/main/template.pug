@@ -3,10 +3,10 @@ app-localstorage-document(
   data='{{user}}')
 
 app-location(route='{{route}}')
-app-route(route='{{route}}', pattern='/:page', data='{{routeData}}', tail='{{subroute}}')
+app-route(auto-activate, route='{{route}}', pattern='/:page', data='{{routeData}}', tail='{{subroute}}')
 app-route(route='{{route}}', pattern='/home', tail='{{homeSubroute}}')
 
-iron-pages(selected='[[routeData.page]]', attr-for-selected='name', fallback-selection='404', role='main')
+iron-pages(selected='{{routeData.page}}', attr-for-selected='name', fallback-selection='404', role='main')
   app-login(name='login')
   app-home(name='home', route='{{homeSubroute}}')
   app-404(name='404')

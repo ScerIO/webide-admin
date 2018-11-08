@@ -12,7 +12,6 @@ import '@polymer/paper-input/paper-input'
 import '@polymer/paper-button/paper-button'
 import '@polymer/app-storage/app-localstorage/app-localstorage-document'
 import ApolloElement from 'utils/apollo'
-import gql from 'graphql-tag'
 import * as view from './template.pug'
 import * as style from './style.css'
 import { tokenAuth } from 'api/auth'
@@ -20,7 +19,6 @@ import IUser from 'site-api/user'
 
 @customElement('app-login')
 export default class AppLogin extends ApolloElement(PolymerElement) {
-
   @property({ type: String })
   private token: string = ''
 
@@ -28,6 +26,7 @@ export default class AppLogin extends ApolloElement(PolymerElement) {
   private user: IUser | null = null
 
   public static get template() {
+    // @ts-ignore
     return html([`<style>${style}</style>${view()}`])
   }
 
@@ -46,5 +45,4 @@ export default class AppLogin extends ApolloElement(PolymerElement) {
     delete user.__typename
     this.user = user
   }
-
 }

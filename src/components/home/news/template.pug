@@ -1,8 +1,36 @@
-app-route(route='{{route}}', pattern='/:page', data='{{routeData}}')
+app-localstorage-document(
+  key='token',
+  data='{{token}}')
 
-.toolbar
-  paper-button( on-click='selectPage' ) {{pageName}}
+dom-if(if='[[hasNewsExist]]')
+  template
+    paper-listbox
+      dom-repeat(items='{{news.all.nodes}}')
+        template
+          paper-icon-item
+            img( class='avatar', slot='item-icon', src='[[item.image]]')
+            paper-item-body(three-line)
+              div [[item.title]]
+              div [[item.description]]
+              div(secondary) Date: [[normalizeDate(item.timestamp)]] | id: [[item.id]]
+dom-if(if='[[!hasNewsExist]]')
+  template
+    h3.no-news No news
 
-iron-pages(selected='[[routeData.page]]', attr-for-selected='name')
-  app-news-all(name='all')
-  app-news-add(name='add')
+paper-fab(icon='add', on-click='openAddNewsDialog')
+
+paper-dialog(entry-animation='scale-up-animation', exit-animation='fade-out-animation')#add
+  h2 Add news
+  paper-dialog-scrollable
+
+    paper-input( label='Picture URL', value='{{image}}' )
+    paper-input( label='Title', value='{{newsTitle}}' )
+    paper-textarea( label='Description', value='{{description}}' )
+    paper-textarea( label='Content', value='{{content}}' )
+
+  .buttons
+    paper-toggle-button( active='{{shareVK}}' ) VK
+    paper-button(dialog-confirm, on-click='addNews') Accept
+    paper-button(dialog-dismiss) Cancel
+
+paper-toast( id='toast' )

@@ -1,5 +1,3 @@
-import '@webcomponents/webcomponentsjs/webcomponents-lite'
-
 import {
   PolymerElement,
   html,
@@ -8,10 +6,12 @@ import {
   customElement,
   property,
   observe,
-  computed,
 } from '@polymer/decorators'
+
+import '@polymer/paper-styles/classes/global'
+import 'web-animations-js/web-animations-next-lite.min'
+
 import '@polymer/iron-pages/iron-pages'
-import '@polymer/iron-selector/iron-selector'
 import '@polymer/app-route/app-route'
 import '@polymer/app-route/app-location'
 import '@polymer/app-storage/app-localstorage/app-localstorage-document'
@@ -24,7 +24,6 @@ import IUser from 'site-api/user'
 
 @customElement('app-main')
 export default class AppMain extends PolymerElement {
-
   @property({ type: Object })
   private user: IUser | null = null
 
@@ -37,6 +36,7 @@ export default class AppMain extends PolymerElement {
    * Template
    */
   public static get template() {
+    // @ts-ignore
     return html([`<style>${style}</style>${view()}`])
   }
 
@@ -50,16 +50,5 @@ export default class AppMain extends PolymerElement {
   private router(page: string, user: string) {
     if (user === null) this.set('routeData.page', 'login')
     else if (page === 'login' || page === '') this.set('routeData.page', 'home')
-  }
-
-  /**
-   * Fix path
-   * TODO: Remove on resolve my pr with add flag 'auto-activate' in home router
-   * *
-   * @param path
-   */
-  @observe('homeSubroute.path')
-  private routePathChanged(path: string) {
-    if (path === '') this.set('homeSubroute.path', '/')
   }
 }

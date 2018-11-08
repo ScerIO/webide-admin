@@ -7,14 +7,8 @@ html
     link(rel='shortcut icon', href=require('./assets/icons/favicon.png'), type='image/png')
     meta(name='robots', content='noindex')
     title IDE Admin
-    style(is='custom-style').
-      html {
-        --paper-fab-background: var(--paper-green-400);
-        --accent-color: var(--paper-green-400);
-        --paper-tabs-selection-bar-color: var(--paper-green-400);
-      }
-      body {
-        margin: 0;
-      }
+    custom-style
+      style(is='custom-style')
+        include index.css
   body
     app-main

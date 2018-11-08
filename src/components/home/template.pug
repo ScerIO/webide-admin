@@ -2,39 +2,39 @@ app-localstorage-document(
   key='user',
   data='{{user}}')
 
-app-route(route='{{route}}', pattern='/:page', data='{{routeData}}')
+app-route(auto-activate, route='{{route}}', pattern='/:page', data='{{routeData}}')
 app-route(route='{{route}}', pattern='/news', tail='{{newsSubroute}}')
 
 iron-media-query(
-  query='max-width: 400px',
+  query='max-width: 600px',
   query-matches='{{smallScreen}}')
 
 app-drawer-layout(drawer-width='288px', force-narrow='')
   // navigation drawer for small screen sizes
   app-drawer#drawer(slot='drawer', swipe-open='[[smallScreen]]')
-    template(is='dom-if', if='[[smallScreen]]')
-      app-toolbar.profileBar
-        img.profilePic(src='{{user.picture}}', width='30', height='30')
-        .profileName [[user.firstName]] [[user.lastName]]
-        paper-icon-button(icon='settings', aria-label='Settings')
-      paper-listbox.mobileMenu(selected='{{routeData.page}}', attr-for-selected='name')
-        template(is='dom-repeat', items='[[pages]]')
-          paper-item(name$='[[_toLowerCase(item)]]') [[item]]
+    app-toolbar.profile-bar
+      img.profile-picture(src='{{user.picture}}', width='30', height='30')
+      .profile-name [[user.firstName]] [[user.lastName]]
+      paper-icon-button(icon='settings', aria-label='Settings')
+    paper-listbox.mobile-menu(selected='{{routeData.page}}', attr-for-selected='name')
+      dom-repeat( items='[[pages]]' )
+        template
+          paper-item( name='[[toLowerCase(item)]]' ) [[item]]
   app-header-layout#headerLayout
     // main header
     app-header(slot='header', effects='waterfall', fixed='[[smallScreen]]', condenses='[[!smallScreen]]', reveals='[[!smallScreen]]')
       app-toolbar#mainToolbar
-        .navItem.leftItem
+        .nav-items.left-items
           paper-icon-button(icon='menu', drawer-toggle, alt='Toogle navigation menu')
-          a(href='#[[sectionData.section]]', tabindex='-1')
-            paper-icon-button(icon='arrow-back', alt='Back to the home')
         .spacer IDE Admin
-        .navItem
+        .nav-items.right-items
           paper-icon-button(icon='more-vert', aria-label='More options')
+          paper-icon-button(src='{{user.picture}}', aria-label='Profile')
       paper-tabs(selected='{{routeData.page}}', attr-for-selected='name', scrollable, sticky)
-        template(is='dom-repeat', items='[[pages]]')
-          paper-tab( name='[[_toLowerCase(item)]]' ) [[item]]
+        dom-repeat(items='[[pages]]')
+          template
+            paper-tab( name='[[toLowerCase(item)]]' ) [[item]]
     iron-pages(selected='[[routeData.page]]', attr-for-selected='name')
       app-news(name='news', route='{{newsSubroute}}')
-      div(name='notifications').inDevelopment In development
-      div(name='chat').inDevelopment In development
+      h3(name='notifications').in-development In development
+      h3(name='chat').in-development In development

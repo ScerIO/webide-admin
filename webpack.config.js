@@ -1,31 +1,13 @@
 const webpack = require('webpack'),
-  BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
-  { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
-  { spawn } = require('child_process'),
-  path = require('path')
+  path = require('path'),
+  { version } = require('./package')
 
-const env = process.env.NODE_ENV,
-  plugins = []
-
-env === 'development' &&
-  plugins.push(
-    // http://localhost:3000
-    new BrowserSyncPlugin({
-      host: 'localhost',
-      port: 3000,
-      open: false,
-      // Proxing poliserve
-      proxy: 'localhost:8128'
-    }),
-    // http://localhost:8888
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false
-    }),
-    // Run poliserve for resolve app-route url's
-  ) && spawn('node', ['node_modules/polyserve/bin/polyserve', '--port', '8128', '--root', './build'])
+const mode = process.env.NODE_ENV || 'development'
 
 module.exports = {
+  mode,
+
   entry: {
     bundle: './src/components/main/index.ts'
   },
@@ -35,7 +17,7 @@ module.exports = {
     publicPath: '/',
   },
 
-  devtool: env === 'production' ? false : 'source-map',
+  devtool: mode === 'production' ? false : 'source-map',
 
   resolve: {
     extensions: ['.ts', '.js', '.json'],
@@ -50,7 +32,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts?$/,
+        test: /\.ts$/,
         loader: ['ts-loader']
       },
       {
@@ -73,14 +55,20 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.EnvironmentPlugin(['NODE_ENV']),
     new webpack.DefinePlugin({
-      'process.env.APP_ENV': JSON.stringify(env),
+      'appVersion': JSON.stringify(version),
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.pug',
     }),
     new webpack.IgnorePlugin(/vertx/),
-    ...plugins,
-  ]
+  ],
+
+  devServer: {
+    host: '0.0.0.0',
+    historyApiFallback: true,
+  },
 }

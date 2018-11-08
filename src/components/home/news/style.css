@@ -1,6 +1,43 @@
-.toolbar {
-  padding: 8px;
-  padding-bottom: 0;
-  display: flex;
-  justify-content: flex-end;
+:host {
+  min-height: 100%;
+}
+
+.no-news {
+  @apply --paper-font-title;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+paper-fab {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
+
+paper-dialog {
+  width: 90%;
+}
+
+paper-dialog-scrollable {
+  --paper-dialog-scrollable: {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 600px) {
+  paper-dialog {
+    width: 80%;
+  }
+}
+
+@media (min-width: 960px) {
+  paper-dialog {
+    width: 60%;
+  }
 }

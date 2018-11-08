@@ -1,5 +1,7 @@
+import {
+  PolymerElement,
+} from '@polymer/polymer/polymer-element'
 import { ApolloClient } from 'apollo-client'
-import { PolymerElementType } from '@polymer/polymer/polymer-element'
 import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { PolymerApolloMixin } from 'polymer-apollo'
@@ -11,10 +13,10 @@ import enviroment from 'utils/enviroment'
 export const apolloClient = new ApolloClient({
   link: new HttpLink({ uri: enviroment({
       production: 'https://api.ide.scer.io/graphql',
-      development: 'https://api.ide.scer.io/graphql', // 'http://localhost/graphql',
+      development: 'http://localhost:8086/graphql',
     }),
   }),
   cache: new InMemoryCache(),
 })
 
-export default (element) => PolymerApolloMixin({ apolloClient }, element) as PolymerElementType
+export default (element: typeof PolymerElement): typeof PolymerElement => PolymerApolloMixin({ apolloClient }, element)

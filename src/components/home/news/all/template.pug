@@ -1,8 +1,0 @@
-paper-listbox
-  template(is='dom-repeat', items='{{news.all.nodes}}')
-    paper-icon-item
-      img( class='avatar', slot='item-icon', src='[[item.image]]')
-      paper-item-body(three-line)
-        div [[item.title]]
-        div [[item.description]]
-        div(secondary) Date: [[_normalizeDate(item.timestamp)]] | id: [[item.id]]

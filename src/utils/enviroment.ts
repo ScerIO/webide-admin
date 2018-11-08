@@ -19,7 +19,7 @@ export enum Enviroment {
  * })
  */
 export default function enviroment({ production, staging, development }: { [enviroment: string]: any }) {
-  switch (String(process.env.APP_ENV)) {
+  switch (process.env.APP_ENV) {
     case Enviroment.production:
       return production
     case Enviroment.staging:

@@ -2,16 +2,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.inDevelopment {
-  @apply --paper-font-title;
-  text-align: center;
-  margin: 40px 0;
-}
-
-app-header {
-  background-color: rgba(255, 255, 255, 0.95);
-}
-
 app-header:not([shadow]) {
   border-bottom: 1px solid var(--paper-grey-200);
 }
@@ -23,14 +13,21 @@ app-drawer {
 }
 
 paper-icon-button {
-  color: #000;
-  --paper-icon-button-ink-color: #31f0ef;
+  border-radius: 50%;
+  --iron-icon: {
+    border-radius: 50%;
+    overflow: hidden;
+  };
 }
 
-.navItem {
+.nav-items {
   @apply --layout-self-start;
   margin-top: 13px;
-  width: 40px;
+  width: 80px;
+}
+
+.left-items paper-icon-button[icon] {
+  display: none;
 }
 
 .spacer {
@@ -46,24 +43,24 @@ paper-icon-button {
   background-size: 100% 100%;
 }
 
-.leftItem [icon] {
-  display: none;
-}
-
 paper-tabs {
   margin-left: -55px;
-  color: #31f0ef;
   font-size: 13px;
 }
 
 paper-tab {
-  --paper-tab-ink: #31f0ef;
   text-transform: uppercase;
   color: var(--primary-text-color);
   font-weight: 500;
 }
 
-.mobileMenu {
+.in-development {
+  @apply --paper-font-title;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.mobile-menu {
   background: transparent;
 }
 
@@ -72,15 +69,15 @@ paper-tab {
   font-weight: bold;
 }
 
-.profileBar {
+.profile-bar {
   margin-bottom: 40px;
 }
 
-.profilePic {
+.profile-picture {
   border-radius: 50% 50%;
 }
 
-.profileName {
+.profile-name {
   @apply --layout-flex;
   margin-left: 20px;
   font-size: 14px;
@@ -91,7 +88,7 @@ paper-tab {
 /**
  * Desktop small, tablet
  */
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   .logo {
     width: 89px;
     height: 17px;
@@ -101,9 +98,12 @@ paper-tab {
 /**
  * Phone
  */
-@media (max-width: 400px) {
-  .leftItem [icon=menu] {
+@media (max-width: 600px) {
+  .left-items paper-icon-button[icon=menu] {
     display: block;
+  }
+  .right-items paper-icon-button {
+    display: none;
   }
   paper-tabs {
     display: none;

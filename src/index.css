@@ -1,0 +1,13 @@
+html {
+  --primary-color: var(--paper-green-600);
+  --accent-color: var(--paper-green-400);
+  --secondary-color: var(--paper-green-200);
+  --paper-fab-keyboard-focus-background: var(--secondary-color);
+  --paper-tabs-selection-bar-color: var(--accent-color);
+  --paper-icon-button-ink-color: var(--accent-color);
+  --paper-tab-ink: var(--secondary-color);
+}
+
+body {
+  margin: 0;
+}
