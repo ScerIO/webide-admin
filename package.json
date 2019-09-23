@@ -42,7 +42,7 @@
     "graphql-tag": "^2.9.2",
     "polymer-apollo": "^2.0.0-rc.6",
     "web-animations-js": "^2.3.1",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.11"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
